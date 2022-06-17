@@ -14,6 +14,19 @@ public class App {
     NameRepository.setNames(data);
     System.out.println("Array Length: " + NameRepository.getSize());
     System.out.println("Print Array Data: " + Arrays.toString(NameRepository.findAll()));
+    System.out.println("Find By fullName: " + NameRepository.find("mehrdad javan"));
+    boolean result = NameRepository.add("Macrus Gugmonsson");
+    System.out.println(result);
+    System.out.println("Print Array Data: " + Arrays.toString(NameRepository.findAll()));
+
+
+    boolean result2 = NameRepository.add("Mehrdad Javan");
+    if (result2){
+      System.out.println("Print Array Data: " + Arrays.toString(NameRepository.findAll()));
+    } else {
+      System.out.println("Data is duplicate.");
+    }
+
 
   }
 
