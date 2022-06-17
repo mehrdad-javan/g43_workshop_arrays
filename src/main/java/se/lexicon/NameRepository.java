@@ -7,7 +7,6 @@ public class NameRepository {
   private static String[] names = new String[0];
 
 
-
   public static int getSize() {
     return names.length;
   }
@@ -47,17 +46,32 @@ public class NameRepository {
       return false;
     }
 
+    //String[] newArray = Arrays.copyOf(names, names.length + 1);
+    //newArray[newArray.length - 1] = fullName;
+    //names = newArray;
+
     names = addToArray(names, fullName);
     return true;
   }
 
-  private static  String[] addToArray(String[] source, String newElement){
+  private static String[] addToArray(String[] source, String newElement) {
     String[] newArray = Arrays.copyOf(source, source.length + 1);
     newArray[newArray.length - 1] = newElement;
     return newArray;
   }
 
+  public static String[] findByFirstName(final String firstName) {
+    String[] result = {};
 
+    for (String element: names){
+      String[] fullNameArray = element.split(" ");  // Mehrdad Javan => [Mehrdad, Javan]
+      String fn = fullNameArray[0];
+      if (fn.equalsIgnoreCase(firstName)){
+        result = addToArray(result, element);
+      }
+    }
+    return result;
+  }
 
 
 }

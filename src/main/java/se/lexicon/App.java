@@ -27,6 +27,11 @@ public class App {
       System.out.println("Data is duplicate.");
     }
 
+    NameRepository.add("Test Testsoon1");
+    NameRepository.add("Test Testsson2");
+    System.out.println("Print Array Data: " + Arrays.toString(NameRepository.findAll()));
+
+    System.out.println(Arrays.toString(NameRepository.findByFirstName("test")));
 
   }
 
