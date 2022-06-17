@@ -6,10 +6,11 @@ public class NameRepository {
 
   private static String[] names = new String[0];
 
+
+
   public static int getSize() {
     return names.length;
   }
-
 
   public static void setNames(String[] names) {
     NameRepository.names = names;
@@ -23,7 +24,6 @@ public class NameRepository {
     return Arrays.copyOf(names, names.length);
   }
 
-
   public static String find(final String fullName) {
     // step1: traverse on array
     for (String element : names) {
@@ -34,7 +34,6 @@ public class NameRepository {
     }
     return null;
   }
-
 
   public static boolean add(final String fullName) {
     // step1: find by full name
@@ -47,12 +46,18 @@ public class NameRepository {
     if (result != null) {
       return false;
     }
-    String[] newArray = Arrays.copyOf(names, names.length + 1);
-    newArray[newArray.length - 1] = fullName;
-    names = newArray;
 
+    names = addToArray(names, fullName);
     return true;
   }
+
+  private static  String[] addToArray(String[] source, String newElement){
+    String[] newArray = Arrays.copyOf(source, source.length + 1);
+    newArray[newArray.length - 1] = newElement;
+    return newArray;
+  }
+
+
 
 
 }
